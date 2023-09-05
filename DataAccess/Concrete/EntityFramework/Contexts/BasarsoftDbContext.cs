@@ -26,7 +26,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseNpgsql("Host=localhost;Database=BasarSoft2;Username=postgres;Password=12345"); 
+            options.UseNpgsql("Host=localhost;Database=BasarSoft;Username=postgres;Password=12345"); 
         }
 
         public DbSet<Door> Doors { get; set; }
