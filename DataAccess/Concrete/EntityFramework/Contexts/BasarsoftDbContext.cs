@@ -24,10 +24,15 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         }
 
 
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    // connect to postgres with connection string from app settings
+        //    options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+        //}
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            // connect to postgres with connection string from app settings
-            options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+            options.UseNpgsql("Host=localhost;Database=BasarSoft2;Username=postgres;Password=12345"); 
         }
 
         public DbSet<Door> Doors { get; set; }

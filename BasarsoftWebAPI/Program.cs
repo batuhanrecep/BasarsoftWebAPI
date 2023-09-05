@@ -25,12 +25,11 @@ builder.Services.AddScoped<DbContext, BasarsoftDbContext>();
 builder.Services.AddScoped<IDoorService, DoorService>();
 builder.Services.AddScoped<IDoorDal, EfDoorDal>();
 
-
 builder.Services.AddDbContext<BasarsoftDbContext>(options =>
 {
     var serviceProvider = builder.Services.BuildServiceProvider();
     var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-    options.UseNpgsql(configuration.GetConnectionString("WebApiDatabase"));
+    //options.UseNpgsql(configuration.GetConnectionString("WebApiDatabase"));
 });
 
 
