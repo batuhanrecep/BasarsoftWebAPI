@@ -46,21 +46,6 @@ builder.Services.AddSwaggerGen();
 
 
 
-
-//
-
-builder.Services.AddDbContext<BasarsoftDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase"));
-});
-
-
-
-
-//
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
