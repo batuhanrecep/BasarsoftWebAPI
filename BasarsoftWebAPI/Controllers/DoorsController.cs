@@ -46,7 +46,6 @@ namespace BasarsoftWebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-
         [HttpPost("add")]
         [EnableCors("AllowSpecificOrigin")]
         public IActionResult Add(Door door)
@@ -59,8 +58,6 @@ namespace BasarsoftWebAPI.Controllers
 
             return BadRequest(result.Message);
         }
-
-
 
         [HttpPost("delete")]
         [EnableCors("AllowSpecificOrigin")]
