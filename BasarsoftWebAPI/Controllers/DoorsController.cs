@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace BasarsoftWebAPI.Controllers
 {
@@ -18,6 +19,7 @@ namespace BasarsoftWebAPI.Controllers
 
 
         [HttpGet("getall")]
+        [EnableCors("AllowSpecificOrigin")]
         public IActionResult GetList()
         {
             var result = _doorService.GetList();
@@ -32,6 +34,7 @@ namespace BasarsoftWebAPI.Controllers
 
 
         [HttpGet("getbyid")]
+        [EnableCors("AllowSpecificOrigin")]
         public IActionResult GetById(int doorId)
         {
             var result = _doorService.GetById(doorId);
@@ -43,7 +46,9 @@ namespace BasarsoftWebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+
         [HttpPost("add")]
+        [EnableCors("AllowSpecificOrigin")]
         public IActionResult Add(Door door)
         {
             var result = _doorService.Add(door);
@@ -55,7 +60,10 @@ namespace BasarsoftWebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+
+
         [HttpPost("delete")]
+        [EnableCors("AllowSpecificOrigin")]
         public IActionResult Delete(Door door)
         {
             var result = _doorService.Delete(door);
@@ -68,6 +76,7 @@ namespace BasarsoftWebAPI.Controllers
         }
 
         [HttpPost("update")]
+        [EnableCors("AllowSpecificOrigin")] 
         public IActionResult Update(Door door)
         {
             var result = _doorService.Update(door);

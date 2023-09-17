@@ -9,6 +9,10 @@ using DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
+using Microsoft.Extensions.DependencyInjection;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,9 +23,9 @@ builder.Services.AddControllers();
 //
 builder.Services.AddControllers().AddControllersAsServices();
 
-builder.Services.AddScoped<ControllerBase, DoorsController>();
-builder.Services.AddScoped<IBasarsoftDbContext, BasarsoftDbContext>();
-builder.Services.AddScoped<DbContext, BasarsoftDbContext>();
+//builder.Services.AddScoped<ControllerBase, DoorsController>();
+//builder.Services.AddScoped<IBasarsoftDbContext, BasarsoftDbContext>();
+//builder.Services.AddScoped<DbContext, BasarsoftDbContext>();
 
 builder.Services.AddScoped<IDoorService, DoorService>();
 builder.Services.AddScoped<IDoorDal, EfDoorDal>();
@@ -33,7 +37,16 @@ builder.Services.AddDbContext<BasarsoftDbContext>(options =>
     //options.UseNpgsql(configuration.GetConnectionString("WebApiDatabase"));
 });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder
+            .WithOrigins("http://localhost:4444") // Replace with your frontend domain
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -52,9 +65,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
+//app.UseRouting();
+app.UseHttpsRedirection();
+app.UseCors("AllowSpecificOrigins");
 app.UseAuthorization();
+
+/////////
+//app.UseCors();
 
 app.MapControllers();
 
