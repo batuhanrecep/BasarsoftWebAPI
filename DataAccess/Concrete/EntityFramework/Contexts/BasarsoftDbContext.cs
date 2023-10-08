@@ -20,7 +20,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         public BasarsoftDbContext()
         {
-            
+            //
         }
 
 

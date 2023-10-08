@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Entities.Concrete
     {
 
         public int DoorId { get; set; }
+        public string DoorName { get; set; }
         public double DoorX { get; set; }
         public double DoorY { get; set; }
 
